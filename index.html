@@ -1,127 +1,84 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Jaffer Khalid | Portfolio</title>
-
-    <!-- Link to external CSS file -->
+    <meta charset="utf-8">
+    <title>Jaffer Khalid | Portfolio (Player)</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0
+        }
+
+        .content-frame {
+            width: 100%;
+            height: calc(100% - 120px);
+            border: 0;
+            display: block
+        }
+
+        audio#introAudio {
+            display: block;
+            margin: 12px
+        }
+
+        .audio-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: #00aaff;
+            color: #0e0e15;
+            border: none;
+            padding: 15px 20px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: opacity 0.3s;
+        }
+
+        .audio-btn:hover {
+            opacity: 0.8;
+        }
+    </style>
 </head>
+
 <body>
-
-    <!-- ===== Hero Section ===== -->
-    <section class="hero">
-        <h2>Software Engineering Student | Gymrat | Personal Trainer | Anime Lover</h2>
-        <p class="tagline">
-            Calm mind. Strong body. Always evolving.
-        </p>
-    </section>
-
-
-
     <!-- ===== Intro Overlay ===== -->
-    <div class="intro-overlay" onclick="parent.document.getElementById('introAudio').play(); this.style.display='none';">
+    <div class="intro-overlay" id="introOverlay"
+        onclick="document.getElementById('introAudio').play(); this.style.display='none';">
         <h1>Enter My World</h1>
         <p>(click)</p>
     </div>
 
-    <!-- ===== Audio Control Button ===== -->
-    <button class="audio-btn" onclick="
-            var audio = parent.document.getElementById('introAudio');
-            if (audio.paused) { audio.play(); this.innerText = '⏸'; }
-            else { audio.pause(); this.innerText = '▶'; }
-        ">
-        ⏸
-    </button>
+    <!-- persistent audio player (hidden, controlled by overlay/button) -->
+    <audio id="introAudio" style="display:none;">
+        <source src="DaBaby - Baby Sitter Ft. Offset.mp3" type="audio/mpeg">
+    </audio>
 
+    <!-- Audio Control Button -->
+    <button class="audio-btn" id="audioBtn" onclick="
+        var audio = document.getElementById('introAudio');
+        if (audio.paused) { audio.play(); this.innerText = '⏸'; }
+        else { audio.pause(); this.innerText = '▶'; }
+    ">⏸</button>
 
+    <!-- top navigation targets the iframe -->
+    <header>
+        <nav class="navbar">
+            <h1 class="logo">Jaffer Khalid</h1>
+            <ul class="nav-links">
+                <li><a href="home.html" target="contentFrame">Home</a></li>
+                <li><a href="skills.html" target="contentFrame">Skills</a></li>
+                <li><a href="contact.html" target="contentFrame">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <!-- ===== About Me Section ===== -->
-    <section class="about">
-        <h3>About Me</h3>
-        <table>
-            <tr>
-                <td><img src="ceac48b94a08a58cda666b425ced0fcd.PNG" width="304" height="224"></td>
-                <td>
-                    <p>
-                        I’m a Software Engineering student trying to survive university one deadline at a time.
-                        I enjoy learning how things work, breaking them, fixing them, and sometimes questioning
-                        why I chose this major in the first place.
-                    </p>
-                </td>
-            </tr>
-
-            <tr>
-
-                <td>
-                    <p>
-                        Outside academics, I’m very serious about the gym. Training isn’t just a hobby for me —
-                        it’s discipline, consistency, and a long-term commitment to growth.
-                    </p>
-                </td>
-                <td><img src="Clipped_image_20250109_150327(1).PNG" width="360" height="578"></td>
-
-            </tr>
-
-            <tr>
-                <td><img src="56bba60dacb2081707be0f0371e14204 (1).PNG" width="314" height="599"></td>
-                <td>
-                    <p>
-                        I’m confident in my ability to help others in the gym perform better. Over the years,
-                        I’ve guided friends, gym bros, and beginners, and eventually became a personal trainer.
-                        My strength and progress are the result of years of hard work, patience, and learning.
-                    </p>
-                </td>
-
-
-            </tr>
-
-            <tr>
-
-                <td>
-                    <p>
-                        I’m also deeply passionate about anime. It inspires me, motivates me, and honestly keeps
-                        me sane. My Hero Academia is one of my favorites because it’s all about growth, struggle,
-                        and becoming better — something I relate to a lot.
-                    </p>
-                </td>
-                <td><img src="e4e36e0972e14ef1bccc71df14e00ecc.PNG" width="306" height="459"></td>
-
-            </tr>
-
-            <tr>
-                <td><img src="48a759ccbdc56075f830ecbfae2954b8(1).PNG" width="308" height="382"></td>
-                <td>
-                    <p>
-                        On the chill side, I post gym content on TikTok and enjoy connecting with people who share
-                        similar interests.
-                    </p>
-                </td>
-
-
-            </tr>
-
-            <tr>
-
-                <td>
-                    <p>
-                        I might seem quiet at first, but once you get to know me, you’ll find
-                        I’m fun, easy-going, playful, annoying and real.
-                    </p>
-                </td>
-                <td><img src="472da8179b3e1122e1abc28c2d099732(1).PNG" width="307" height="421"></td>
-
-            </tr>
-
-        </table>
-    </section>
-
-    <!-- ===== Footer ===== -->
-    <footer>
-        <p>© 2025 Jaffer Khalid | Built with HTML & CSS</p>
-    </footer>
-
-
+    <!-- load pages inside iframe so audio persists across navigation -->
+    <iframe name="contentFrame" class="content-frame" src="home.html" title="Portfolio content"></iframe>
 </body>
-</html>
 
+</html>
