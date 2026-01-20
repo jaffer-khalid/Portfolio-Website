@@ -1,0 +1,94 @@
+Warning: Don’t paste code into the DevTools Console that you don’t understand or haven’t reviewed yourself. This could allow attackers to steal your identity or take control of your computer. Please type ‘allow pasting’ below and press Enter to allow pasting.
+Warning: Don’t paste code into the DevTools Console that you don’t understand or haven’t reviewed yourself. This could allow attackers to steal your identity or take control of your computer. Please type ‘allow pasting’ below and press Enter to allow pasting.
+allow pasting
+const reverseString = (str) => str.split('').reverse().join('');
+
+console.log(reverseString("hello")); // "olleh"
+VM504:3 olleh
+undefined
+function factorial(n) {
+  if (n === 0 || n === 1) return 1;
+  return n * factorial(n - 1);
+}
+
+console.log(factorial(5)); // 120
+VM508:6 120
+undefined
+function isPalindrome(str) {
+  const cleaned = str.toLowerCase().replace(/[^a-z0-9]/g, '');
+  const reversed = cleaned.split('').reverse().join('');
+  return cleaned === reversed;
+}
+
+console.log(isPalindrome("racecar")); // true
+VM512:7 true
+undefined
+function calculator(num1, num2, operator) {
+  switch (operator) {
+    case '+': return num1 + num2;
+    case '-': return num1 - num2;
+    case '*': return num1 * num2;
+    case '/': return num2 !== 0 ? num1 / num2 : "Cannot divide by zero";
+    default: return "Invalid operator";
+  }
+}
+
+console.log(calculator(10, 5, '*'));
+VM799:11 50
+undefined
+function isPrime(num) {
+  if (num <= 1) return false;
+  for (let i = 2; i <= Math.sqrt(num); i++) {
+    if (num % i === 0) return false;
+  }
+  return true;
+}
+
+console.log(isPrime(11));
+VM817:9 true
+undefined
+function generateFibonacci(n) {
+  let fib = [0, 1];
+  for (let i = 2; i < n; i++) {
+    fib[i] = fib[i - 1] + fib[i - 2];
+  }
+  return fib.slice(0, n);
+}
+
+console.log(generateFibonacci(8));
+VM862:9 (8) [0, 1, 1, 2, 3, 5, 8, 13]
+undefined
+function secondLargest(arr) {
+  let first = -Infinity, second = -Infinity;
+  for (let num of arr) {
+    if (num > first) {
+      second = first;
+      first = num;
+    } else if (num > second && num !== first) {
+      second = num;
+    }
+  }
+  return second;
+}
+
+console.log(secondLargest([10, 5, 20, 8, 20]));
+VM876:14 10
+undefined
+function isLeapYear(year) {
+  return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+}
+
+console.log(isLeapYear(2024));
+VM893:5 true
+undefined
+let a = 5, b = 10;
+[a, b] = [b, a];
+
+console.log(a, b);
+VM917:4 10 5
+undefined
+const randomNumber = Math.floor(Math.random() * 100) + 1;
+
+console.log(randomNumber);
+VM921:3 16
+undefined
